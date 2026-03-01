@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/__pycache__": true,
+        ".venv": true
+    },
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "[json]": {
+        "editor.formatOnSave": false
+    },
+    "[toml]": {
+        "editor.formatOnSave": false
+    }
+}
