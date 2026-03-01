@@ -9,7 +9,9 @@ if __name__ == '__main__':
     layout = chart.set_layout("2x1")     ## create layout ie. number of charts
 
     ch1 = layout[0].create_candlestick_series("chart1")
+    layout[0].set_watermark("chart1")
     ch2 = layout[1].create_candlestick_series("chart2")
+    layout[1].set_watermark("chart2")
 
     df = pl.read_csv("data/1d.csv")
     df = df.slice(-100)

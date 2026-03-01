@@ -5,7 +5,7 @@ add this to .bashrc file
 ## notes
 some examples in [examples/](examples/)
 you cant directly run those examples from that directory.
-you need to move it to the root directory and run it from there.
+you need to move it to the main directory and run it from there.
 
 # lwc-python
 
