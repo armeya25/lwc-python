@@ -5,7 +5,12 @@ add this to .bashrc file
 ## notes
 some examples in [examples/](examples/)
 you cant directly run those examples from that directory.
-you need to move it to the main directory and run it from there.
+you need to move it to the root directory and run it from there.
+
+## screenshots
+1. [single chart](screenshots/single_chart.png)
+2. [multi chart](screenshots/multi_chart.png)
+3. [indicator example](screenshots/indicator_example.png)
 
 # lwc-python
 
