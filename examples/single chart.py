@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     ch1 = layout[0].create_candlestick_series("testing")
 
-    df = pl.read_csv("1d.csv")
+    df = pl.read_csv("data/1d.csv")
     df = df.slice(-100)
     ch1.set_data(df)
     

@@ -96,6 +96,7 @@ window.seriesMap = new Map();    // seriesId -> seriesInstance
 window.chartSeriesMap = new Map(); // chartId -> Set<seriesId>
 window.chartTimeZone = 'Asia/Kolkata'; // Default
 window.tooltipEnabled = true;
+window.syncEnabled = true;       // Crosshair/Time sync
 
 let isReady = false;
 
@@ -367,7 +368,9 @@ function createLayout(type) {
                 window.charts.set(chartId, chart);
 
                 // Sync
-                SyncManager.register(chart, cell);
+                if (window.syncEnabled) {
+                    SyncManager.register(chart, cell);
+                }
 
                 // --- Per-Chart HUD (Legend + Tooltip) ---
                 const hud = document.createElement('div');
@@ -837,9 +840,9 @@ function processCommandSync(cmd) {
 
             // ─── Chart Options ───────────────────────────────────────────
             case 'set_sync': {
-                // Registration already handled via SyncManager. 
+                window.syncEnabled = cmd.data.enabled;
                 // enable/disable crosshair sync by toggling the sync manager charts.
-                if (!cmd.data.enabled) {
+                if (!window.syncEnabled) {
                     SyncManager.charts = [];
                     if (SyncManager._rafId) {
                         cancelAnimationFrame(SyncManager._rafId);

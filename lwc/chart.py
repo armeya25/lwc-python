@@ -84,10 +84,10 @@ class Series:
                     pl.lit('rgba(38, 166, 154, 0.5)').alias('color')
                 ])
                 
-            vol_dicts = vol_data.to_dicts()
+            vol_dicts = vol_data.drop_nulls().to_dicts()
             self.chart._send_series_data(vol_series.series_id, vol_dicts)
         
-        data_dicts = data.to_dicts()
+        data_dicts = data.drop_nulls().to_dicts()
         self.chart._send_series_data(self.series_id, data_dicts)
 
     def update(self, item):
@@ -133,8 +133,11 @@ class Series:
                 self.chart._send_series_update(vol_series.series_id, vol_item_dict)
         
         # Taking the first row as the item
-        item_dict = item.to_dicts()[0]
-        self.chart._send_series_update(self.series_id, item_dict)
+        # drop_nulls before converting to dict to ensure we don't send malformed points
+        item_clean = item.drop_nulls()
+        if not item_clean.is_empty():
+            item_dict = item_clean.to_dicts()[0]
+            self.chart._send_series_update(self.series_id, item_dict)
 #########################################################################################################
 
 
