@@ -67,6 +67,3 @@ cover/
 *~
 .DS_Store
 
-# Data files
-*.csv
-data/
