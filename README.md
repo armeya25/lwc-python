@@ -4,6 +4,9 @@ add this to .bashrc file
 
 ## notes
 some examples in [examples/](examples/)
+you cant directly run those examples from that directory.
+you need to move it to the main directory and run it from there.
+
 # lwc-python
 
 `lwc-python` is a Python charting library that provides a high-performance, interactive, and beautifully styled charting interface by bridging Python and TradingView's [Lightweight Charts](https://github.com/tradingview/lightweight-charts) via `pywebview`.
