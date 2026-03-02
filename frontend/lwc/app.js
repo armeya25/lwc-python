@@ -617,6 +617,8 @@ function processCommandSync(cmd) {
             return;
         }
 
+        console.log("CMD RECEIVED:", cmd.action, cmd);
+
         if (!isReady) {
             console.warn("Not ready, ignoring:", cmd.action);
             return;

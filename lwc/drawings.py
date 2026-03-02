@@ -308,7 +308,6 @@ class DrawingTool:
         return marker_id
     #########################################################################################################
 
-
     def remove_marker(self, series_id, marker_id):
         """
         Remove a marker from a series.

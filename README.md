@@ -8,9 +8,10 @@ you cant directly run those examples from that directory.
 you need to move it to the root directory and run it from there.
 
 ## screenshots
-1. ![single chart](screenshots/single_chart.png)
-2. ![multi chart](screenshots/multi_chart.png)
-3. ![indicator example](screenshots/indicator_example.png)
+![single chart](screenshots/single_chart.png)
+![multi chart](screenshots/multi_chart.png)
+![indicator example](screenshots/indicator_example.png)
+![drawing tools](screenshots/drawing_tools.png)
 
 # lwc-python
 
@@ -44,6 +45,40 @@ if __name__ == '__main__':
     ch1.set_data(df)
     
     # Show the chart blocking
+    chart.show(block=True)
+```
+
+### Drawing Tools Example
+
+```python
+from lwc.chart import Chart
+import polars as pl
+
+if __name__ == '__main__':
+    chart = Chart()
+    layout = chart.set_layout()
+    ch1 = layout[0].create_candlestick_series("Main Chart")
+
+    df = pl.read_csv("1d.csv")
+    df = df.with_columns(pl.col("date").cast(pl.Datetime("ms")))
+    ch1.set_data(df)
+
+    # 1. Horizontal Line (PriceLine)
+    layout[0].toolbox.create_horizontal_line(series_id=ch1.series_id, price=18.5, color='#F44336', text='Support')
+    
+    # 2. Box / Rectangle
+    layout[0].toolbox.create_box(
+        start_time=df['date'][5], 
+        end_time=df['date'][15], 
+        start_price=19.5, 
+        end_price=17.0, 
+        color='rgba(255, 255, 0, 0.2)', 
+        border_color='#d4af37', 
+        text='Consolidation'
+    )
+
+    # See examples/drawing tools.py for more examples like trendlines, fib retracement, and markers.
+
     chart.show(block=True)
 ```
 
